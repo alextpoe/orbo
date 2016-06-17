@@ -134,6 +134,7 @@
 	var MovingObject = __webpack_require__(4);
 	var SmallOrb = __webpack_require__(5);
 	var Orb = __webpack_require__(6);
+	var Enemy = __webpack_require__(8);
 
 	var Game = function () {
 	  this.DIM_X = 800;
@@ -141,6 +142,8 @@
 	  this.orb = new Orb (this);
 	  this.smallOrbs = [];
 	  this.newOrbs = [];
+	  this.enemies = [];
+	  this.makeEnemies();
 	  this.makeOrbs(this);
 	};
 
@@ -153,7 +156,7 @@
 	};
 
 	Game.prototype.moveObjects = function () {
-	  this.allObjects().forEach(function(object) {
+	  this.movingObjects().forEach(function(object) {
 	    object.move();
 	  });
 	};
@@ -161,12 +164,19 @@
 	Game.prototype.makeOrbs = function (game) {
 	  var that = this;
 	  that.newOrbs = [];
-	  var orbNumber = (this.orb.orbLife / 10).toFixed();
+	  var orbNumber = (this.orb.orbTime / 10).toFixed();
 	  for (var i = 0; i < orbNumber; i++) {
 	    that.newOrbs.push(new SmallOrb(game));
 	  }
 
 	  this.smallOrbs = that.newOrbs.concat(this.smallOrbs);
+	};
+
+	Game.prototype.makeEnemies = function () {
+	  var that = this;
+	  setInterval(function () {
+	    that.enemies.push(new Enemy());
+	  }, 1500);
 	};
 
 	Game.prototype.toggleMoving = function (mousePosX, mousePosY, ctx, orbClicked){
@@ -197,19 +207,29 @@
 	};
 
 	Game.prototype.step = function () {
-	  var init = true;
-
-	  if (init) {
-	    this.newOrbs.forEach(function(orb) {
-	      orb.move();
-	    });
-	    init = false;
-	  }
-
+	  this.moveObjects();
 	};
 
 	Game.prototype.allObjects = function () {
-	  return this.smallOrbs.concat(this.orb);
+	  return this.smallOrbs.concat(this.orb).concat(this.enemies);
+	};
+
+	Game.prototype.movingObjects = function () {
+	  return this.smallOrbs.concat(this.enemies);
+	};
+
+	Game.prototype.remove = function () {
+	  this.allObjects.forEach(function (object) {
+	    if (object.life <= 0){
+	      if (object instanceof Orb) {
+	        throw "Game Over";
+	      } else if (object instanceof SmallOrb){
+	        this.smallOrbs.splice(this.smallOrbs.indexOf(object), 1);
+	      } else if (object instanceof Enemy) {
+	        this.enemies.splice(this.enemies.indexOf(object), 1);
+	      }
+	    }
+	  });
 	};
 
 
@@ -308,7 +328,7 @@
 	var MovingObject = __webpack_require__(4);
 
 	var SmallOrb = function (game) {
-	  this.COLOR = "blue";
+	  this.color = "#FFEC8B";
 	  this.radius = 10;
 	  this.game = game;
 	  this.vel = Utils.randomVec(5);
@@ -366,9 +386,10 @@
 	var Orb = function (game) {
 	  this.pos = [400, 400];
 	  this.radius = 40;
-	  this.color = "blue";
+	  this.color = "#BBFFFF";
 	  this.game = game;
-	  this.orbLife = 80;
+	  this.life = 1000;
+	  this.orbTime = 80;
 	};
 
 	Orb.prototype.draw = function(ctx){
@@ -379,6 +400,57 @@
 	};
 
 	module.exports = Orb;
+
+
+/***/ },
+/* 7 */,
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Utils = __webpack_require__(3);
+	var MovingObject = __webpack_require__(4);
+
+	var Enemy = function () {
+	  this.color = "black";
+	  this.radius = 15;
+	  this.pos = Utils.randomPos();
+	  this.vel = this.findVec();
+
+	  this.life = 200;
+	};
+
+	Utils.inherits(Enemy, MovingObject);
+
+	Enemy.prototype.findVec = function () {
+
+	  var x = 400 - this.pos[0];
+	  var y = 400 - this.pos[1];
+
+	  var frac = x/y;
+
+	  if (x < 0 && y < 0) {
+	    x = -(frac);
+	    y = -1;
+	  } else if (y < 0){
+	    x = -(frac);
+	    y = -1;
+	  } else {
+	    x = frac;
+	    y = 1;
+	  }
+
+	  return [x, y];
+	};
+
+	Enemy.prototype.draw = function (ctx) {
+	  ctx.beginPath();
+	  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2);
+	  ctx.fillStyle = this.color;
+	  ctx.fill();
+	};
+
+
+	module.exports = Enemy;
 
 
 /***/ }
