@@ -2,13 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-
+    <title>OrbO</title>
+    <link rel="stylesheet" type="text/css" href="orbo.css" />
   </head>
   <body>
+    <div class="modal-background">
+      <div class="modal-window">
+        <h1>Welcome to Orb-O!</h1>
+        <p>
+          The object of the game is to get the high score by clicking
+          and flicking the little orbs into the enemy.  Press space to makeEnemies
+          the little guys appear!  Click anywhere to start.
+        </p>
+      </div>
+    </div>
+
+    <div class="modal-background-game-over disappear">
+      <div class="modal-window-game-over disappear">
+        <h1>Game Over!</h1>
+        <p>
+          Bummer, you lost!  Click anywhere to play again!
+        </p>
+      </div>
+    </div>
+
     <canvas id="canvas" width="800" height="800"></canvas>
     <script type="text/javascript" src="lib/bundle.js">
-
     </script>
   </body>
 </html>

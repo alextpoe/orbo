@@ -1,0 +1,76 @@
+body, div, h1, ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+canvas {
+  position: absolute;
+  left: 13%;
+}
+
+
+.modal-background {
+  position:absolute;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.modal-window {
+  text-align: center;
+  float: left;
+  background: #fff;
+  z-index: 1;
+  position: relative;
+  top: 100px;
+  width: 400px;
+  height: 500px;
+  left: 33%;
+  border-radius: 5px;
+}
+
+.modal-window > h1 {
+  text-align: center;
+
+}
+
+.modal-window > p {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.modal-background-game-over {
+  position:absolute;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.modal-window-game-over {
+  text-align: center;
+  float: left;
+  background: #fff;
+  z-index: 1;
+  position: relative;
+  top: 100px;
+  width: 400px;
+  height: 500px;
+  left: 33%;
+  border-radius: 5px;
+}
+
+.disappear {
+  visibility: hidden;
+  z-index: -1;
+}
