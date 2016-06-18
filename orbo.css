@@ -8,7 +8,7 @@ body, div, h1, ul, li {
 
 canvas {
   position: absolute;
-  left: 13%;
+  left: 28%;
 }
 
 
@@ -32,7 +32,7 @@ canvas {
   top: 100px;
   width: 400px;
   height: 500px;
-  left: 33%;
+  left: 40%;
   border-radius: 5px;
 }
 
@@ -71,6 +71,7 @@ canvas {
 }
 
 .disappear {
-  visibility: hidden;
-  z-index: -1;
+  display: none;
+  /*visibility: hidden;
+  z-index: -1;*/
 }
