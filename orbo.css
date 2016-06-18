@@ -4,11 +4,12 @@ body, div, h1, ul, li {
   list-style: none;
   text-decoration: none;
   font-family: sans-serif;
+  font-style: arial rounded mt bold;
 }
 
 canvas {
   position: absolute;
-  left: 28%;
+  left: 21%;
 }
 
 
@@ -32,18 +33,19 @@ canvas {
   top: 100px;
   width: 400px;
   height: 500px;
-  left: 40%;
+  left: 36%;
   border-radius: 5px;
 }
 
 .modal-window > h1 {
   text-align: center;
-
+  padding-top: 40px;
 }
 
 .modal-window > p {
   text-align: center;
-  padding-top: 50px;
+  padding: 30px 20px;
+  font-size: 18px;
 }
 
 .modal-background-game-over {
@@ -66,8 +68,20 @@ canvas {
   top: 100px;
   width: 400px;
   height: 500px;
-  left: 33%;
+  left: 36%;
   border-radius: 5px;
+}
+
+.modal-window-game-over > h1 {
+  text-align: center;
+  padding-top: 40px;
+
+}
+
+.modal-window-game-over > p {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 18px;
 }
 
 .disappear {
