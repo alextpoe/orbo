@@ -63,16 +63,4 @@ Most importantly, I plan on calculating the track of the small orbs a bit differ
 
 Additionally, I plan on making the game more visually appealing and keeping track of high scores.
 
-Finally, I plan on making this a mobile game using either React Native or learning iOS.
-
-### Comments
-
-Users will be able to leave comments on tasks and projects.  
-
-### Due Dates
-
-Tasks and projects will be assigned due dates.
-
-### Notifications
-
-When tasks are completed, when comments are posted, and when due dates are upcoming, the user will receive a notification.
+Finally, I plan on making this a mobile game using either React Native or Objective-C/Swift.
