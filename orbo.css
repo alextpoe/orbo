@@ -12,6 +12,10 @@ canvas {
   left: 21%;
 }
 
+body {
+  background: #000;
+}
+
 
 .modal-background {
   position:absolute;
