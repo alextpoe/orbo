@@ -1,8 +1,10 @@
 # orbo
 
 
-[orbo live][github]
+[OrbO live][github]
 [github]: http://alexpoe.tech/orbo
+
+![OrbO ScreenShot](assets/screen_shot.png)
 
 OrbO is a simple, JavaScript browser game where the goal is to protect your orb in the middle of the screen by using smaller orbs to destroy oncoming enemies.
 
